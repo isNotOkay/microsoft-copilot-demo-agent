@@ -1,10 +1,14 @@
-using Microsoft.AspNetCore.OpenApi;
+using Microsoft.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+builder.Services.AddOpenApi(options =>
+{
+    // Force OpenAPI 3.0.x instead of 3.1.x
+    options.OpenApiVersion = OpenApiSpecVersion.OpenApi3_0;
+});
 
 var app = builder.Build();
 
