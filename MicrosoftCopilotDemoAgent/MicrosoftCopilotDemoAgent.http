@@ -4,3 +4,6 @@ GET {{MicrosoftCopilotDemoAgent_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+GET {{MicrosoftCopilotDemoAgent_HostAddress}}/openapi.json
+Accept: application/json

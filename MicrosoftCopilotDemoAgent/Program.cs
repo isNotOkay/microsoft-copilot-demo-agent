@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.OpenApi;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,16 +9,16 @@ builder.Services.AddOpenApi();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
+
+// Expose the generated OpenAPI document at /openapi.json (in all environments)
+app.MapOpenApi("/openapi.json");
 
 app.UseHttpsRedirection();
 
 var summaries = new[]
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+    "Freezing", "Bracing", "Chilly", "Cool", "Mild",
+    "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
 
 app.MapGet("/weatherforecast", () =>
