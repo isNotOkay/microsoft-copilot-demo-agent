@@ -34,7 +34,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
         with:
-          context: ./MicrosoftCopilotDemoAgent
+          # IMPORTANT: context is repo root so the COPY in Dockerfile works
+          context: .
           file: ./MicrosoftCopilotDemoAgent/Dockerfile
           push: true
           tags: |
