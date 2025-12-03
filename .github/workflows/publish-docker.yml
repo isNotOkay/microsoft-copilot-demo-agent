@@ -34,5 +34,5 @@ jobs:
           file: ./MicrosoftCopilotDemoAgent/Dockerfile
           push: true
           tags: |
-            ${{ env.REGISTRY }}/${{ toLower(env.IMAGE_NAME) }}:latest
-            ${{ env.REGISTRY }}/${{ toLower(env.IMAGE_NAME) }}:${{ github.sha }}
+            ${{ env.REGISTRY }}/${{ lower(env.IMAGE_NAME) }}:latest
+            ${{ env.REGISTRY }}/${{ lower(env.IMAGE_NAME) }}:${{ github.sha }}
