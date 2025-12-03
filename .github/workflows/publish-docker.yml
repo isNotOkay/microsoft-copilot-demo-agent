@@ -20,6 +20,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Convert IMAGE_NAME to lowercase for GHCR
+      - name: Normalize image name to lowercase
+        run: echo "IMAGE_NAME_LC=${IMAGE_NAME,,}" >> "$GITHUB_ENV"
+
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
         with:
@@ -34,5 +38,5 @@ jobs:
           file: ./MicrosoftCopilotDemoAgent/Dockerfile
           push: true
           tags: |
-            ${{ env.REGISTRY }}/${{ lower(env.IMAGE_NAME) }}:latest
-            ${{ env.REGISTRY }}/${{ lower(env.IMAGE_NAME) }}:${{ github.sha }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_LC }}:latest
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_LC }}:${{ github.sha }}
